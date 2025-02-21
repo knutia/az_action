@@ -7,8 +7,8 @@ on:
 name: Run Azure Login With a Service Principal Secret
 
 env:
-  ENVIRONMENT: test
-  # AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+  # ENVIRONMENT: test
+  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
   
 jobs:
 
@@ -16,17 +16,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Uncover secret
-      run: echo -n "${{ secrets.AZURE_CREDENTIALS }}" | xxd -ps
+      run: echo -n "${{ env.AZURE_CREDENTIALS }}" | xxd -ps
       
     - name: Uncover secret2
-      run: echo "${{secrets.AZURE_CREDENTIALS}}" | sed 's/./& /g'
+      run: echo "${{env.AZURE_CREDENTIALS}}" | sed 's/./& /g'
       
     - name: Uncover secret3
-      run: echo "${{secrets.AZURE_CREDENTIALS}}"
+      run: echo "${{env.AZURE_CREDENTIALS}}"
       
     - uses: azure/login@v2
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{ env.AZURE_CREDENTIALS }}
 
     - name: Azure CLI script
       uses: azure/cli@v2
