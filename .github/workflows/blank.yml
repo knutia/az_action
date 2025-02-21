@@ -6,6 +6,10 @@ on:
    
 name: Run Azure Login With a Service Principal Secret
 
+env:
+  ENVIRONMENT: test
+  # AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+  
 jobs:
 
   build-and-deploy:
