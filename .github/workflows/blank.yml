@@ -26,7 +26,8 @@ jobs:
       run: echo "${{env.AZURE_CREDENTIALS}}"
 
     - name: Run jq
-      run: jq < t.json
+      run: ls
+      #run: jq < t.json
       
 #    - uses: azure/login@v2
 #      with:
