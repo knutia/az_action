@@ -21,6 +21,7 @@ env:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    environment: test
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -49,8 +50,9 @@ jobs:
         run: echo "${{env.AZURE_CREDENTIALS}}"
   
       - name: Run jq
-        run: ls
-        #run: jq < t.json
+        run: |
+          ls
+          jq < t.json
       
 #     - uses: azure/login@v2
 #       with:
