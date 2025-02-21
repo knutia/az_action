@@ -13,6 +13,7 @@ env:
 jobs:
 
   build-and-deploy:
+    environment: test
     runs-on: ubuntu-latest
     steps:
     - name: Uncover secret
